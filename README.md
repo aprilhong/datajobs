@@ -158,13 +158,12 @@ plt.title("Skill Demand for Data Scientist Jobs in 2023", fontsize=12)
 # Plot
 plt.show()
 ```
-<br>
-
-![alt text](assets/image-3.png)
 
 **Results**
 
 Python emerged as the most popular skill demanded for both remote and Atlanta based data scientist jobs, followed by SQL, R. After taking into account the demand, the main difference from the previous finding is java has been replaced by R. This remphasize previously mentioned importance placed on programming language skills. 
+
+![alt text](assets/image-3.png)
 
 ### 4. Top Payings Skills for Data Scientist based on salary
 
