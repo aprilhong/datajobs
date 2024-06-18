@@ -21,7 +21,6 @@ To delve into the exciting world of data science, I'll be leveraging the power o
 - Python
 - Git & Github
 
-
 # The Analysis
 
 The analysis is structured to answer the following questions
@@ -164,6 +163,7 @@ plt.show()
 ![alt text](assets/image-3.png)
 
 **Results**
+
 Python emerged as the most popular skill demanded for both remote and Atlanta based data scientist jobs, followed by SQL, R. After taking into account the demand, the main difference from the previous finding is java has been replaced by R. This remphasize previously mentioned importance placed on programming language skills. 
 
 ### 4. Top Payings Skills for Data Scientist based on salary
@@ -194,6 +194,7 @@ Previously, we identified the top data scientist skills based on salary. However
 
 
 **Results**
+
 When comparing the most sought-after skills with the highest salaries, the findings diverge from previous expectations. For example, in remote job settings, skills like C (earning $165K), Go ($164.7K), and Qlik ($164K) command significant salaries despite varying demand levels of 48, 57, and 15 respectively.
 
 Conversely, in Atlanta, GA, data scientist positions highlight different top-paying skills such as BigQuery ($175K), TensorFlow ($149K), and Tableau ($149K). Notably, SQL ranks fourth in terms of salary ($146K) despite being the most demanded skill.
@@ -215,7 +216,7 @@ Remote data scientist roles emphasize skills related to GDPR, Golang, and Atlass
 
 The comparison between sought-after skills and highest salaries shows significant divergences, with remote roles valuing C, Go, and Qlik despite varying demand, while in Atlanta, GA, data scientist positions prioritize BigQuery, TensorFlow, and Tableau over SQL despite its high demand.
 
-### Insights
+# Insights
 For data scientist job seekers, the following insights and recommendations can be derived from the information provided:
 
 **Skill Prioritization:** Focus on developing strong skills in Python, SQL, and R, as these are consistently in high demand across both remote and Atlanta-based positions. Stay updated with emerging technologies like Cassandra, Spark, Hadoop, and Tableau, which are crucial for data processing and visualization.
