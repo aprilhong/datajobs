@@ -7,29 +7,35 @@ Question: What are the most optimal skills to learn (aka in high demand and a hi
 */
 
 
-
+WITH ranked_skills AS (
+    SELECT 
+        skills_dim.skill_id,
+        skills_dim.skills,
+        job_location,
+        COUNT(skills_job_dim.job_id) AS demand_count,
+        ROUND(AVG(job_postings_fact.salary_year_avg), 0) AS avg_salary,
+        ROW_NUMBER() OVER (PARTITION BY job_location ORDER BY ROUND(AVG(job_postings_fact.salary_year_avg), 0) DESC, COUNT(skills_job_dim.job_id) DESC) AS rank
+    FROM
+        job_postings_fact
+    INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+    INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+    WHERE 
+        job_title_short = 'Data Scientist'
+        AND job_location IN ('Anywhere', 'Atlanta, GA')
+        AND job_postings_fact.salary_year_avg IS NOT NULL
+    GROUP BY
+        skills_dim.skill_id,
+        skills_dim.skills,
+        job_location
+    HAVING
+        COUNT(skills_job_dim.job_id) > 10
+)
 SELECT 
-    skills_dim.skill_id,
-    skills_dim.skills,
-    COUNT(skills_job_dim.*) AS demand_count,
-    ROUND(AVG(salary_year_avg),0) AS avg_salary
-FROM
-    job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+    skills,
+    job_location,
+    demand_count,
+    avg_salary
+FROM 
+    ranked_skills
 WHERE 
-    job_title_short = 'Data Scientist' AND
-    job_location = 'Atlanta, GA'
-    AND salary_year_avg is NOT NULL
-GROUP BY
-    skills_dim.skill_id
-HAVING
-    COUNT(skills_job_dim.job_id) > 10
-ORDER BY 
-    avg_salary DESC,
-    demand_count DESC
-;
-
-/*
-
-*/
+    rank <= 5;

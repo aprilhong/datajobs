@@ -1,7 +1,8 @@
-/* Question: What are the top paying Data Scientist r jobs?
-- Identify the top 10 highest-paying Data Scientist roles that are available remotely
-- Focus on job postings with specific salaries (remove nulls).
-- Why? Highlight the top-paying opportunities for Data Scientist, offering insights into skills and roles to pursure
+/* Question: What are the top 10 paying Data Scientist jobs?
+- Identify the Data Scientist roles available in Atlanta, GA and remotely
+- Focus on job postings with specified salaries (not nill)
+- Why? Highlight the top-paying opportunities for Data Scientist, 
+  offering insights into skills and roles to pursure
 */
 
 SELECT
@@ -17,12 +18,14 @@ FROM
 LEFT JOIN company_dim
     ON job_postings_fact.company_id = company_dim.company_id
 WHERE
-    job_title_short = 'Data Scientist' AND
-    --salary_year_avg is NOT NULL AND
-    --job_location = 'Anywhere' OR
-    job_location = 'Atlanta, GA' AND
-    salary_year_avg BETWEEN 120000 AND 150000
+    job_title_short = 'Data Scientist'
+    AND salary_year_avg IS NOT NULL
+    AND job_location IN ('Atlanta, GA','Anywhere')
 ORDER BY 
     salary_year_avg DESC
-;
+LIMIT 10;
 
+
+/*
+
+*/
